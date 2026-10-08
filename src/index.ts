@@ -1,12 +1,6 @@
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
-import {
-  DESPEDIDA,
-  PREGUNTA_SECCIONES,
-  PREGUNTA_SEGUIR,
-  SALUDO,
-  SECCIONES,
-  type Pregunta,
-} from "./contenido.js";
+import { DESPEDIDA, PREGUNTA_SECCIONES, PREGUNTA_SEGUIR, SALUDO, SECCIONES } from "./contenido.js";
+import type { MensajeEntrante, WebhookBody, Estado, Fila, Pregunta } from "./types.js"
 
 // Configuración
 const PORT = Number(process.env.PORT ?? 5000);
@@ -22,35 +16,11 @@ const EQUIVALENCIAS: Record<string, string> = {
   "5493751619821": "54375115619821",
 };
 
-// Tipos del webhook de WhatsApp (solo lo que usamos)
-interface MensajeEntrante {
-  id?: string;
-  from: string;
-  type?: string;
-  text?: { body: string };
-  interactive?: {
-    type?: string;
-    list_reply?: { id: string; title?: string };
-    button_reply?: { id: string; title?: string };
-  };
-}
-
-interface WebhookBody {
-  entry?: { changes?: { value?: { messages?: MensajeEntrante[] } }[] }[];
-}
-
 // Índices del contenido
 const PREGUNTAS = new Map<string, { seccion: number; pregunta: Pregunta }>();
 for (const sec of SECCIONES) {
   for (const p of sec.preguntas) PREGUNTAS.set(p.id, { seccion: sec.id, pregunta: p });
 }
-
-// Estado de las conversaciones (en memoria; se pierde al reiniciar).
-// Sin estado = charla nueva o terminada.
-type Estado =
-  | { pantalla: "secciones" }
-  | { pantalla: "preguntas"; n: number }
-  | { pantalla: "post"; n: number };
 
 const estados = new Map<string, Estado>();
 const mensajesProcesados = new Set<string>(); // ignora reintentos duplicados de Meta
@@ -112,12 +82,6 @@ function enviarBotones(
       },
     }),
   );
-}
-
-interface Fila {
-  id: string;
-  titulo: string;
-  descripcion?: string;
 }
 
 /** filas: máx. 10 en total. */

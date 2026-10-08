@@ -2,28 +2,13 @@
 // Límites de WhatsApp para listas: máx. 10 filas en total, título de fila
 // hasta 24 caracteres, descripción hasta 72, texto del botón hasta 20.
 
-export interface Pregunta {
-  id: string; // "q_1" ... "q_30"
-  corto: string; // título de la fila (máx. 24 caracteres)
-  pregunta: string;
-  respuesta: string;
-  referencia: string;
-}
-
-export interface Seccion {
-  id: number;
-  titulo: string; // título corto para la lista (máx. 24 caracteres)
-  nombre: string; // nombre oficial de la sección
-  descripcion: string; // máx. 72 caracteres
-  preguntas: Pregunta[];
-}
+import type { Seccion } from "./types.js";
 
 export const SALUDO =
   "¡Hola! Soy el asistente del Código de Edificación de la Municipalidad de Posadas. ¿Qué sección querés consultar?\n\n_Las respuestas son síntesis de los artículos indicados; para casos concretos debe consultarse el texto completo y la normativa aplicable._";
 export const PREGUNTA_SECCIONES = "¿Qué sección querés consultar?";
 export const PREGUNTA_SEGUIR = "¿Qué querés hacer ahora?";
 export const DESPEDIDA = "¡Gracias por tu consulta! Si necesitás algo más, escribinos cuando quieras.";
-
 export const SECCIONES: Seccion[] = [
   {
     "id": 1,
