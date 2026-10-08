@@ -19,7 +19,7 @@ export interface Seccion {
 }
 
 export const SALUDO =
-  "¡Hola! Soy el asistente del Código de Edificación de la Municipalidad de Posadas. ¿Qué sección querés consultar?\n\n_Las respuestas son síntesis de los artículos indicados; para casos concretos debe consultarse el texto completo y la normativa aplicable._";
+  "¡Hola! Soy el asistente del Código de Edificación de la Municipalidad de Posadas. ¿Qué sección querés consultar?\n\n_Las respuestas son síntesis de los artículos indicados; para casos concretos debe consultarse el texto completo y la normativa aplicable._\n*Codigo de Edificacion 2025:* https://drive.google.com/file/d/1eyLxb_MMhSKjQor9YqzGRm3XGLKgSDh_/view?usp=drive_link";
 export const PREGUNTA_SECCIONES = "¿Qué sección querés consultar?";
 export const PREGUNTA_SEGUIR = "¿Qué querés hacer ahora?";
 export const DESPEDIDA = "¡Gracias por tu consulta! Si necesitás algo más, escribinos cuando quieras.";
