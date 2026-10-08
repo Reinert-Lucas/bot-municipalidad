@@ -143,7 +143,7 @@ async function mostrarPreguntas(numero: string, n: number, prefijo = ""): Promis
     descripcion: recortar(p.pregunta, 72),
   }));
   filas.push({ id: "menu", titulo: "Volver a secciones" });
-  if (await enviarLista(numero, texto, "Ver preguntas", "Preguntas", filas)) {
+  if (await enviarLista(numero, texto, "Seleccionar Pregunta", "Preguntas", filas)) {
     estados.set(numero, { pantalla: "preguntas", n });
   }
 }

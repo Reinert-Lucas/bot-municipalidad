@@ -5,7 +5,7 @@
 import type { Seccion } from "./types.js";
 
 export const SALUDO =
-  "¡Hola! Soy el asistente del Código de Edificación de la Municipalidad de Posadas. ¿Qué sección querés consultar?\n\n_Las respuestas son síntesis de los artículos indicados; para casos concretos debe consultarse el texto completo y la normativa aplicable._";
+  "¡Hola! Soy el asistente del Código de Edificación de la Municipalidad de Posadas. ¿Qué sección querés consultar?\n\n_Las respuestas son síntesis de los artículos indicados; para casos concretos debe consultarse el texto completo y la normativa aplicable._\n*Nota:* Usa los botones de la parte inferior 👇";
 export const PREGUNTA_SECCIONES = "¿Qué sección querés consultar?";
 export const PREGUNTA_SEGUIR = "¿Qué querés hacer ahora?";
 export const DESPEDIDA = "¡Gracias por tu consulta! Si necesitás algo más, escribinos cuando quieras.";
