@@ -1,16 +1,3 @@
-/**
- * Bot Muni - Código de Edificación de Posadas (WhatsApp Cloud API).
- * Versión TypeScript, sin dependencias de runtime (http y fetch nativos).
- *
- * Flujo:
- *   1. El usuario escribe -> saludo + lista de SECCIONES del Código.
- *   2. Elige una sección -> lista de PREGUNTAS de esa sección.
- *   3. Elige una pregunta -> respuesta + referencia + botones:
- *      "Otra pregunta" (misma sección) / "Otra sección" / "Terminar".
- *
- * Variables de entorno: VERIFY_TOKEN, WHATSAPP_TOKEN, PHONE_NUMBER_ID, PORT
- */
-
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import {
   DESPEDIDA,
@@ -21,9 +8,7 @@ import {
   type Pregunta,
 } from "./contenido.js";
 
-// ---------------------------------------------------------------------------
 // Configuración
-// ---------------------------------------------------------------------------
 const PORT = Number(process.env.PORT ?? 5000);
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN ?? "cambiar-este-token";
 const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN ?? "";
@@ -37,9 +22,7 @@ const EQUIVALENCIAS: Record<string, string> = {
   "5493751619821": "54375115619821",
 };
 
-// ---------------------------------------------------------------------------
 // Tipos del webhook de WhatsApp (solo lo que usamos)
-// ---------------------------------------------------------------------------
 interface MensajeEntrante {
   id?: string;
   from: string;
@@ -56,18 +39,14 @@ interface WebhookBody {
   entry?: { changes?: { value?: { messages?: MensajeEntrante[] } }[] }[];
 }
 
-// ---------------------------------------------------------------------------
 // Índices del contenido
-// ---------------------------------------------------------------------------
 const PREGUNTAS = new Map<string, { seccion: number; pregunta: Pregunta }>();
 for (const sec of SECCIONES) {
   for (const p of sec.preguntas) PREGUNTAS.set(p.id, { seccion: sec.id, pregunta: p });
 }
 
-// ---------------------------------------------------------------------------
 // Estado de las conversaciones (en memoria; se pierde al reiniciar).
 // Sin estado = charla nueva o terminada.
-// ---------------------------------------------------------------------------
 type Estado =
   | { pantalla: "secciones" }
   | { pantalla: "preguntas"; n: number }
@@ -76,9 +55,7 @@ type Estado =
 const estados = new Map<string, Estado>();
 const mensajesProcesados = new Set<string>(); // ignora reintentos duplicados de Meta
 
-// ---------------------------------------------------------------------------
 // Envío de mensajes
-// ---------------------------------------------------------------------------
 async function post(payload: object): Promise<boolean> {
   try {
     const r = await fetch(GRAPH_URL, {
@@ -177,9 +154,7 @@ function recortar(texto: string, max: number): string {
   return texto.length <= max ? texto : texto.slice(0, max - 1).trimEnd() + "…";
 }
 
-// ---------------------------------------------------------------------------
 // Pantallas del bot
-// ---------------------------------------------------------------------------
 async function mostrarSecciones(numero: string, texto: string): Promise<void> {
   const filas = SECCIONES.map((s) => ({
     id: `sec_${s.id}`,
@@ -233,9 +208,7 @@ async function mostrarPost(numero: string, n: number, prefijo = ""): Promise<voi
   }
 }
 
-// ---------------------------------------------------------------------------
 // Lógica de la conversación
-// ---------------------------------------------------------------------------
 /** Maneja el id de una fila de lista o de un botón tocado. */
 async function procesarId(numero: string, rid: string): Promise<void> {
   if (rid.startsWith("sec_")) {
@@ -298,9 +271,7 @@ async function procesarWebhook(body: WebhookBody): Promise<void> {
   }
 }
 
-// ---------------------------------------------------------------------------
 // Servidor HTTP
-// ---------------------------------------------------------------------------
 function leerBody(req: IncomingMessage): Promise<string> {
   return new Promise((resolve, reject) => {
     let data = "";
@@ -325,7 +296,7 @@ const server = createServer(async (req, res) => {
   const url = new URL(req.url ?? "/", "http://localhost");
 
   if (req.method === "GET" && url.pathname === "/") {
-    return responder(res, 200, "Bot Muni activo"); // útil como health check
+    return responder(res, 200, "Bot Muni activo"); // health check
   }
 
   if (req.method === "GET" && url.pathname === "/webhook") {
