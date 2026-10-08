@@ -172,6 +172,11 @@ function enviarLista(
   );
 }
 
+/** Recorta un texto al largo máximo, agregando "…" si hizo falta. */
+function recortar(texto: string, max: number): string {
+  return texto.length <= max ? texto : texto.slice(0, max - 1).trimEnd() + "…";
+}
+
 // ---------------------------------------------------------------------------
 // Pantallas del bot
 // ---------------------------------------------------------------------------
@@ -189,8 +194,15 @@ async function mostrarSecciones(numero: string, texto: string): Promise<void> {
 async function mostrarPreguntas(numero: string, n: number, prefijo = ""): Promise<void> {
   const sec = SECCIONES.find((s) => s.id === n);
   if (!sec) return;
-  const texto = `${prefijo}*Sección ${sec.id} — ${sec.nombre}*\nElegí tu consulta:`;
-  const filas: Fila[] = sec.preguntas.map((p) => ({ id: p.id, titulo: p.corto }));
+  // Las preguntas completas van numeradas en el cuerpo del mensaje (hasta 1024
+  // caracteres); las filas muestran "Pregunta N" y el comienzo de la pregunta.
+  const detalle = sec.preguntas.map((p, i) => `${i + 1}. ${p.pregunta}`).join("\n\n");
+  const texto = `${prefijo}*Sección ${sec.id} — ${sec.nombre}*\n\n${detalle}\n\nElegí tu consulta:`;
+  const filas: Fila[] = sec.preguntas.map((p, i) => ({
+    id: p.id,
+    titulo: `Pregunta ${i + 1}`,
+    descripcion: recortar(p.pregunta, 72),
+  }));
   filas.push({ id: "menu", titulo: "Volver a secciones" });
   if (await enviarLista(numero, texto, "Ver preguntas", "Preguntas", filas)) {
     estados.set(numero, { pantalla: "preguntas", n });

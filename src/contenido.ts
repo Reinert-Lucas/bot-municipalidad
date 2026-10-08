@@ -229,7 +229,7 @@ export const SECCIONES: Seccion[] = [
     "id": 5,
     "titulo": "Instalaciones",
     "nombre": "De las Instalaciones Complementarias",
-    "descripcion": "Ascensores, ocupantes, sanitarias, gas",
+    "descripcion": "Instalaciones complementarias: ascensores, sanitarias, gas",
     "preguntas": [
       {
         "id": "q_25",
