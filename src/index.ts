@@ -293,6 +293,18 @@ async function mostrarSecciones(numero: string, texto: string): Promise<void> {
 async function mostrarPreguntas(numero: string, n: number): Promise<void> {
   const sec = SECCIONES.find((s) => s.id === n);
   if (!sec) return mostrarSecciones(numero, PREGUNTA_SECCIONES); // id inválido o viejo
+  if (sec.preguntas.length === 0) {
+    // Sección todavía sin consultas cargadas: se avisa en lugar de mostrar una lista vacía.
+    await enviarBotones(
+      numero,
+      `*Sección ${sec.id} — ${sec.nombre}*\n\nTodavía no hay consultas cargadas en esta sección.`,
+      [
+        { id: "otra_sec", titulo: "Otra sección" },
+        { id: "fin", titulo: "Terminar" },
+      ],
+    );
+    return;
+  }
   // Las preguntas completas van numeradas en el cuerpo del mensaje (hasta 1024
   // caracteres); las filas muestran "Pregunta N" y el comienzo de la pregunta.
   const detalle = sec.preguntas.map((p, i) => `${i + 1}. ${p.pregunta}`).join("\n\n");
