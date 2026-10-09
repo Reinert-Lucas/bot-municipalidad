@@ -9,6 +9,10 @@ import type { MensajeEntrante, WebhookBody, Fila, Pregunta } from "./types.js";
 const PORT = Number(process.env.PORT ?? 5000);
 const GRAPH_BASE = process.env.GRAPH_API_BASE ?? "https://graph.facebook.com/v25.0";
 const PERMITIR_SIN_FIRMA = process.env.ALLOW_UNSIGNED === "true"; // solo para desarrollo
+const IMAGENES_RESPUESTA: Record<string, string | undefined> = {
+  q_29: process.env.IMAGEN_Q29_URL,
+  q_30: process.env.IMAGEN_Q30_URL,
+};
 
 const EQUIVALENCIAS: Record<string, string> = {
   "5493751619821": "54375115619821",
@@ -331,6 +335,24 @@ function enviarBotones(
   );
 }
 
+function enviarImagenConBotones(
+  numero: string,
+  texto: string,
+  url: string,
+  botones: { id: string; titulo: string }[],
+): Promise<boolean> {
+  return post(
+    interactivo(numero, {
+      type: "button",
+      header: { type: "image", image: { link: url } },
+      body: { text: texto },
+      action: {
+        buttons: botones.map((b) => ({ type: "reply", reply: { id: b.id, title: b.titulo } })),
+      },
+    }),
+  );
+}
+
 /** filas: máx. 10 en total. */
 function enviarLista(
   numero: string,
@@ -415,7 +437,13 @@ async function mostrarRespuesta(numero: string, qid: string): Promise<void> {
   const item = PREGUNTAS.get(qid);
   if (!item) return;
   const { seccion, pregunta: p } = item;
-  const texto = `*${p.pregunta}*\n\n${p.respuesta}\n\n_Referencia: ${p.referencia}_\n\n${PREGUNTA_SEGUIR}`;
+  const urlImagen = p.url ?? IMAGENES_RESPUESTA[qid];
+  const respuesta = p.respuesta || (urlImagen ? "" : "La imagen de esta respuesta todavía no está configurada.\n\n");
+  const texto = `*${p.pregunta}*\n\n${respuesta}_Referencia: ${p.referencia}_\n\n${PREGUNTA_SEGUIR}`;
+  if (urlImagen) {
+    await enviarImagenConBotones(numero, texto, urlImagen, botonesPost(seccion));
+    return;
+  }
   await enviarBotones(numero, texto, botonesPost(seccion));
 }
 

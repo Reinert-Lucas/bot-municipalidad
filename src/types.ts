@@ -34,6 +34,7 @@ interface Pregunta {
   pregunta: string;
   respuesta: string;
   referencia: string;
+  url?: string
 }
 
 interface Seccion {

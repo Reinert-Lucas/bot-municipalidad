@@ -141,14 +141,14 @@ export const SECCIONES: Seccion[] = [
         "id": "q_29",
         "corto": "Accesos Vehiculares",
         "pregunta": "¿Existe una cantidad máxima de accesos vehiculares según el ancho del terreno?",
-        "respuesta": "Un local de primera clase debe iluminar y ventilar al espacio urbano o a patios de primera clase, según las dimensiones indicadas por las normativas urbanísticas vigentes. El patio mínimo tendrá un lado mínimo de 3.00 m y una superficie mínima de 12.00 m2. Los patios no podrán cubrirse con elementos fijos ni claraboyas vidriadas ni corredizas. Solo se aceptan pérgolas de madera, metálicas o toldos.",
+        "respuesta": "Ver Imagen",
         "referencia": "Art. 3.4.10.1"
       },
       {
         "id": "q_30",
         "corto": "Altura Minima de un Local",
         "pregunta": "¿Cuál es la altura mínima permitida de un local?",
-        "respuesta": "Un local de primera clase debe iluminar y ventilar al espacio urbano o a patios de primera clase, según las dimensiones indicadas por las normativas urbanísticas vigentes. El patio mínimo tendrá un lado mínimo de 3.00 m y una superficie mínima de 12.00 m2. Los patios no podrán cubrirse con elementos fijos ni claraboyas vidriadas ni corredizas. Solo se aceptan pérgolas de madera, metálicas o toldos.",
+        "respuesta": "Ver Imagen",
         "referencia": "Art. 3.2.3.5"
       },
       {
