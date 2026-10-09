@@ -1,5 +1,7 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
+import { mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
+import { dirname } from "node:path";
 import { DESPEDIDA, PREGUNTA_SECCIONES, PREGUNTA_SEGUIR, SALUDO, SECCIONES } from "./contenido.js";
 import type { MensajeEntrante, WebhookBody, Fila, Pregunta } from "./types.js";
 
@@ -53,9 +55,14 @@ if (!APP_SECRET) {
 
 // Límites contra abusos (todos ajustables por variable de entorno).
 const LIM_USUARIO_MINUTO = entero("LIMITE_USUARIO_POR_MINUTO", 20); // mensajes de un mismo número
-const LIM_USUARIO_DIA = entero("LIMITE_USUARIO_POR_DIA", 300);
+const LIM_USUARIO_DIA = entero("LIMITE_USUARIO_POR_DIA", 40);
 const LIM_ENVIOS_MINUTO = entero("LIMITE_ENVIOS_POR_MINUTO", 300); // mensajes que envía el bot (tope global)
-const LIM_ENVIOS_DIA = entero("LIMITE_ENVIOS_POR_DIA", 10_000);
+const LIM_ENVIOS_DIA = entero("LIMITE_ENVIOS_POR_DIA", 1000);
+// Tope mensual de mensajes enviados por el bot (el límite gratuito de Meta es de 1.000 por mes).
+const LIM_ENVIOS_MES = entero("LIMITE_ENVIOS_POR_MES", 1000);
+// Últimos mensajes del mes reservados para avisarle a la gente que se alcanzó el límite.
+const RESERVA_AVISOS_MES = Math.min(entero("RESERVA_AVISOS_MES", 10), Math.max(0, LIM_ENVIOS_MES - 1));
+const RUTA_CONTADOR = process.env.RUTA_CONTADOR ?? "./contador-mensual.json";
 const MAX_PENDIENTES = entero("MAX_PENDIENTES", 200); // webhooks procesándose a la vez
 const MAX_MENSAJES_POR_WEBHOOK = entero("MAX_MENSAJES_POR_WEBHOOK", 50);
 const MAX_EDAD_MS = entero("MAX_EDAD_MENSAJE_MIN", 15) * 60_000; // se ignoran mensajes más viejos
@@ -72,6 +79,8 @@ const DURACIONES_BLOQUEO = [10 * MINUTO, HORA, DIA]; // escalan con cada reincid
 
 const AVISO_LIMITE =
   "Detectamos demasiados mensajes en poco tiempo. Por favor, esperá unos minutos antes de volver a escribir.";
+const AVISO_MES_AGOTADO =
+  "Por el momento el asistente alcanzó su límite de consultas de este mes. Volverá a estar disponible a partir del 1.º del mes próximo.";
 
 // Índices del contenido
 const PREGUNTAS = new Map<string, { seccion: number; pregunta: Pregunta }>();
@@ -127,13 +136,98 @@ const enviosMinuto = new ContadorVentana(MINUTO, LIM_ENVIOS_MINUTO);
 const enviosDia = new ContadorVentana(DIA, LIM_ENVIOS_DIA);
 let ultimaAlertaEnvios = 0;
 
-function permitirEnvio(): boolean {
-  const ok = enviosMinuto.permitir("global") && enviosDia.permitir("global");
-  if (!ok && Date.now() - ultimaAlertaEnvios > MINUTO) {
-    ultimaAlertaEnvios = Date.now();
-    console.error("ALERTA: se alcanzó el tope global de envíos; los mensajes se descartan hasta que se libere.");
+// Tope mensual: se guarda en un archivo para que sobreviva a los reinicios.
+interface ContadorMensual {
+  mes: string; // "AAAA-MM" (UTC)
+  cuenta: number;
+}
+
+function mesActual(): string {
+  return new Date().toISOString().slice(0, 7);
+}
+
+function cargarContador(): ContadorMensual {
+  try {
+    const d = JSON.parse(readFileSync(RUTA_CONTADOR, "utf8")) as Partial<ContadorMensual>;
+    if (typeof d.mes === "string" && Number.isInteger(d.cuenta) && (d.cuenta as number) >= 0) {
+      return { mes: d.mes, cuenta: d.cuenta as number };
+    }
+  } catch {
+    /* sin archivo previo o ilegible: se empieza de cero */
   }
-  return ok;
+  console.warn(
+    `No se encontró un contador mensual previo en ${RUTA_CONTADOR}: se empieza en 0. ` +
+      "Si esto ocurre después de cada deploy, el disco no es persistente y el tope mensual no es confiable.",
+  );
+  return { mes: mesActual(), cuenta: 0 };
+}
+
+function guardarContador(): void {
+  try {
+    mkdirSync(dirname(RUTA_CONTADOR), { recursive: true });
+    const tmp = `${RUTA_CONTADOR}.tmp`;
+    writeFileSync(tmp, JSON.stringify(contadorMes));
+    renameSync(tmp, RUTA_CONTADOR);
+  } catch (e) {
+    console.error("No se pudo guardar el contador mensual:", e);
+  }
+}
+
+let contadorMes: ContadorMensual = cargarContador();
+const avisadosMes = new Set<string>(); // a quién ya se le avisó que se agotó el mes
+
+/** Si cambió el mes, el contador vuelve a cero. */
+function actualizarMes(): void {
+  const mes = mesActual();
+  if (contadorMes.mes !== mes) {
+    contadorMes = { mes, cuenta: 0 };
+    avisadosMes.clear();
+    guardarContador();
+    console.log(`Nuevo mes (${mes}): contador de envíos en 0`);
+  }
+}
+
+/** true si ya no se pueden mandar respuestas normales (solo quedan los avisos reservados). */
+function mesAgotado(): boolean {
+  actualizarMes();
+  return contadorMes.cuenta >= LIM_ENVIOS_MES - RESERVA_AVISOS_MES;
+}
+
+function reservarCupoMensual(esAviso: boolean): boolean {
+  actualizarMes();
+  const tope = esAviso ? LIM_ENVIOS_MES : LIM_ENVIOS_MES - RESERVA_AVISOS_MES;
+  if (contadorMes.cuenta >= tope) return false;
+  contadorMes.cuenta++;
+  guardarContador();
+  for (const pct of [0.5, 0.8, 0.9]) {
+    if (contadorMes.cuenta === Math.floor(LIM_ENVIOS_MES * pct)) {
+      console.warn(`ALERTA: se usó el ${pct * 100}% del límite mensual (${contadorMes.cuenta}/${LIM_ENVIOS_MES})`);
+    }
+  }
+  if (contadorMes.cuenta === LIM_ENVIOS_MES - RESERVA_AVISOS_MES) {
+    console.error(`ALERTA: se alcanzó el límite mensual de envíos (${contadorMes.cuenta}/${LIM_ENVIOS_MES}).`);
+  }
+  return true;
+}
+
+/** Si Meta rechazó el envío, ese mensaje no se entregó y no debe contar. */
+function devolverCupoMensual(): void {
+  if (contadorMes.cuenta > 0) {
+    contadorMes.cuenta--;
+    guardarContador();
+  }
+}
+
+function permitirEnvio(esAviso: boolean): boolean {
+  const ok = enviosMinuto.permitir("global") && enviosDia.permitir("global");
+  if (!ok) {
+    if (Date.now() - ultimaAlertaEnvios > MINUTO) {
+      ultimaAlertaEnvios = Date.now();
+      console.error("ALERTA: se alcanzó el tope global de envíos; los mensajes se descartan hasta que se libere.");
+    }
+    return false;
+  }
+  return reservarCupoMensual(esAviso);
 }
 
 type Veredicto = "ok" | "avisar" | "ignorar";
@@ -176,6 +270,7 @@ function limpiarMemoria(): void {
   }
   if (mensajesProcesados.size > MAX_CLAVES) mensajesProcesados.clear();
   if (baneados.size > MAX_CLAVES) baneados.clear();
+  if (avisadosMes.size > MAX_CLAVES) avisadosMes.clear();
 }
 setInterval(limpiarMemoria, MINUTO).unref();
 
@@ -189,8 +284,8 @@ function igualesSeguro(a: string, b: string): boolean {
 // ===========================================================================
 // Envío de mensajes
 // ===========================================================================
-async function post(payload: object): Promise<boolean> {
-  if (!permitirEnvio()) return false;
+async function post(payload: object, esAviso = false): Promise<boolean> {
+  if (!permitirEnvio(esAviso)) return false;
   try {
     const r = await fetch(GRAPH_URL, {
       method: "POST",
@@ -201,7 +296,10 @@ async function post(payload: object): Promise<boolean> {
       body: JSON.stringify(payload),
       signal: AbortSignal.timeout(10_000),
     });
-    if (!r.ok) console.error("Error al enviar:", r.status, await r.text());
+    if (!r.ok) {
+      console.error("Error al enviar:", r.status, await r.text());
+      devolverCupoMensual(); // Meta lo rechazó: no se entregó, no cuenta
+    }
     return r.ok;
   } catch (e) {
     console.error("Error de red al enviar:", e);
@@ -218,13 +316,16 @@ function interactivo(numero: string, interactive: object): object {
   };
 }
 
-function enviarTexto(numero: string, texto: string): Promise<boolean> {
-  return post({
-    messaging_product: "whatsapp",
-    to: destinatario(numero),
-    type: "text",
-    text: { body: texto },
-  });
+function enviarTexto(numero: string, texto: string, esAviso = false): Promise<boolean> {
+  return post(
+    {
+      messaging_product: "whatsapp",
+      to: destinatario(numero),
+      type: "text",
+      text: { body: texto },
+    },
+    esAviso,
+  );
 }
 
 /** botones: máx. 3, título de hasta 20 caracteres. */
@@ -402,6 +503,15 @@ async function procesarWebhook(body: WebhookBody): Promise<void> {
         const veredicto = controlarUsuario(msg.from);
         if (veredicto === "ignorar") continue;
 
+        // Límite mensual: se avisa una sola vez a cada persona y después no se responde.
+        if (veredicto === "ok" && mesAgotado()) {
+          if (!avisadosMes.has(msg.from)) {
+            avisadosMes.add(msg.from);
+            await enviarTexto(msg.from, AVISO_MES_AGOTADO, true);
+          }
+          continue;
+        }
+
         try {
           if (veredicto === "avisar") await enviarTexto(msg.from, AVISO_LIMITE);
           else await procesarMensaje(msg);
@@ -531,6 +641,10 @@ server.listen(PORT, () => {
   console.log(
     `Límites: ${LIM_USUARIO_MINUTO}/min y ${LIM_USUARIO_DIA}/día por usuario; ` +
       `envíos ${LIM_ENVIOS_MINUTO}/min y ${LIM_ENVIOS_DIA}/día en total`,
+  );
+  console.log(
+    `Tope mensual: ${LIM_ENVIOS_MES} mensajes (${RESERVA_AVISOS_MES} reservados para avisos); ` +
+      `usados en ${contadorMes.mes}: ${contadorMes.cuenta}; contador en ${RUTA_CONTADOR}`,
   );
 });
 
