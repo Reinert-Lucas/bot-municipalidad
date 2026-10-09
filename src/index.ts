@@ -5,9 +5,7 @@ import { dirname } from "node:path";
 import { DESPEDIDA, PREGUNTA_SECCIONES, PREGUNTA_SEGUIR, SALUDO, SECCIONES } from "./contenido.js";
 import type { MensajeEntrante, WebhookBody, Fila, Pregunta } from "./types.js";
 
-// ===========================================================================
 // Configuración
-// ===========================================================================
 const PORT = Number(process.env.PORT ?? 5000);
 const GRAPH_BASE = process.env.GRAPH_API_BASE ?? "https://graph.facebook.com/v25.0";
 const PERMITIR_SIN_FIRMA = process.env.ALLOW_UNSIGNED === "true"; // solo para desarrollo
@@ -20,7 +18,6 @@ function destinatario(numero: string): string {
   return EQUIVALENCIAS[numero] ?? numero;
 }
 
-/** Lee una variable de entorno obligatoria; si falta, el servidor no arranca. */
 function requerida(nombre: string): string {
   const valor = process.env[nombre];
   if (!valor) {
@@ -30,7 +27,6 @@ function requerida(nombre: string): string {
   return valor;
 }
 
-/** Lee un número entero positivo de una variable de entorno opcional. */
 function entero(nombre: string, porDefecto: number): number {
   const v = Number(process.env[nombre]);
   return Number.isFinite(v) && v > 0 ? Math.floor(v) : porDefecto;
@@ -40,9 +36,6 @@ const VERIFY_TOKEN = requerida("VERIFY_TOKEN");
 const WHATSAPP_TOKEN = requerida("WHATSAPP_TOKEN");
 const PHONE_NUMBER_ID = requerida("PHONE_NUMBER_ID");
 const GRAPH_URL = `${GRAPH_BASE}/${PHONE_NUMBER_ID}/messages`;
-
-// App Secret (Meta > Configuración de la app > Básica): sirve para comprobar
-// que cada webhook realmente viene de Meta.
 const APP_SECRET = process.env.APP_SECRET ?? "";
 if (!APP_SECRET) {
   if (PERMITIR_SIN_FIRMA) {
@@ -69,14 +62,12 @@ const MAX_EDAD_MS = entero("MAX_EDAD_MENSAJE_MIN", 15) * 60_000; // se ignoran m
 const BLOQUEADOS = new Set(
   (process.env.BLOQUEADOS ?? "").split(",").map((s) => s.trim()).filter(Boolean),
 );
-
 const MINUTO = 60_000;
 const HORA = 60 * MINUTO;
 const DIA = 24 * HORA;
 const MAX_CLAVES = 50_000; // tope de entradas en cada tabla en memoria
 const MAX_BODY = 262_144; // 256 KB; los webhooks de WhatsApp pesan unos pocos KB
 const DURACIONES_BLOQUEO = [10 * MINUTO, HORA, DIA]; // escalan con cada reincidencia
-
 const AVISO_LIMITE =
   "Detectamos demasiados mensajes en poco tiempo. Por favor, esperá unos minutos antes de volver a escribir.";
 const AVISO_MES_AGOTADO =
@@ -95,10 +86,7 @@ function enmascarar(numero: string): string {
   return numero.length > 4 ? `***${numero.slice(-4)}` : numero;
 }
 
-// ===========================================================================
 // Control de abusos
-// ===========================================================================
-
 /** Contador de ventana fija: permite hasta `max` eventos por clave en cada ventana. */
 class ContadorVentana {
   private datos = new Map<string, { inicio: number; cuenta: number }>();
@@ -174,7 +162,7 @@ function guardarContador(): void {
 }
 
 let contadorMes: ContadorMensual = cargarContador();
-const avisadosMes = new Set<string>(); // a quién ya se le avisó que se agotó el mes
+const avisadosMes = new Set<string>(); // a quién ya se se avisó que se agotó el mes
 
 /** Si cambió el mes, el contador vuelve a cero. */
 function actualizarMes(): void {
@@ -281,9 +269,7 @@ function igualesSeguro(a: string, b: string): boolean {
   return timingSafeEqual(ha, hb);
 }
 
-// ===========================================================================
 // Envío de mensajes
-// ===========================================================================
 async function post(payload: object, esAviso = false): Promise<boolean> {
   if (!permitirEnvio(esAviso)) return false;
   try {
@@ -379,9 +365,7 @@ function recortar(texto: string, max: number): string {
   return texto.length <= max ? texto : texto.slice(0, max - 1).trimEnd() + "…";
 }
 
-// ===========================================================================
 // Pantallas del bot
-// ===========================================================================
 async function mostrarSecciones(numero: string, texto: string): Promise<void> {
   const filas = SECCIONES.map((s) => ({
     id: `sec_${s.id}`,
@@ -435,9 +419,7 @@ async function mostrarRespuesta(numero: string, qid: string): Promise<void> {
   await enviarBotones(numero, texto, botonesPost(seccion));
 }
 
-// ===========================================================================
 // Lógica de la conversación (sin estado: cada id lleva su contexto)
-// ===========================================================================
 /** Maneja el id de una fila de lista o de un botón tocado. */
 async function procesarId(numero: string, rid: string): Promise<void> {
   if (rid.startsWith("sec_")) {
@@ -523,9 +505,7 @@ async function procesarWebhook(body: WebhookBody): Promise<void> {
   }
 }
 
-// ===========================================================================
 // Servidor HTTP
-// ===========================================================================
 function leerBody(req: IncomingMessage): Promise<Buffer> {
   return new Promise((resolve, reject) => {
     const partes: Buffer[] = [];

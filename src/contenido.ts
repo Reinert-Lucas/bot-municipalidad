@@ -122,6 +122,48 @@ export const SECCIONES: Seccion[] = [
         "pregunta": "¿Qué puedo construir por fuera de la Línea Municipal?",
         "respuesta": "En la fachada principal solo se permite sobresalir:\n• Hasta 3,00 m de altura: umbrales y antepechos hasta 0,02 m; ménsulas de balcones o voladizos, listeles, guardapolvos y otros motivos de ornato a más de 2,30 m de altura. No pueden sobresalir hojas de puertas o ventanas, cortinas, celosías, barandas, rejas ni otro elemento fijo o móvil.\n• Sobre 3,00 m: en calles y avenidas de 10 a 20 m de ancho, cuerpos cerrados y balcones hasta 1/12 del ancho de la calle; en avenidas de 23 m o más, desde 1/12 del ancho hasta 2,00 m.\n\nNo rige en sectores con regulaciones específicas del Código de Planeamiento Urbano. En esquina, las salientes de los niveles superiores mantienen la medida permitida de la calle más angosta.",
         "referencia": "Art. 3.2.3.1"
+      },
+      {
+        "id": "q_27",
+        "corto": "Columnas en Ochava",
+        "pregunta": "¿Se pueden construir columnas en ochava?",
+        "respuesta": "No se admite la ejecución de columnas en ochavas, está prohibido.",
+        "referencia": "Art. 3.2.3.5"
+      },
+      {
+        "id": "q_28",
+        "corto": "Local de primera clase",
+        "pregunta": "¿Cuál es el patio permitido para iluminar y ventilar un local de primera clase?",
+        "respuesta": "Un local de primera clase debe iluminar y ventilar al espacio urbano o a patios de primera clase, según las dimensiones indicadas por las normativas urbanísticas vigentes. El patio mínimo tendrá un lado mínimo de 3.00 m y una superficie mínima de 12.00 m2. Los patios no podrán cubrirse con elementos fijos ni claraboyas vidriadas ni corredizas. Solo se aceptan pérgolas de madera, metálicas o toldos.",
+        "referencia": "Art. 3.3.4.2"
+      },
+      {
+        "id": "q_28",
+        "corto": "Accesos Vehiculares",
+        "pregunta": "¿Existe una cantidad máxima de accesos vehiculares según el ancho del terreno?",
+        "respuesta": "Un local de primera clase debe iluminar y ventilar al espacio urbano o a patios de primera clase, según las dimensiones indicadas por las normativas urbanísticas vigentes. El patio mínimo tendrá un lado mínimo de 3.00 m y una superficie mínima de 12.00 m2. Los patios no podrán cubrirse con elementos fijos ni claraboyas vidriadas ni corredizas. Solo se aceptan pérgolas de madera, metálicas o toldos.",
+        "referencia": "Art. 3.4.10.1"
+      },
+      {
+        "id": "q_29",
+        "corto": "Altura Minima de un Local",
+        "pregunta": "¿Cuál es la altura mínima permitida de un local?",
+        "respuesta": "Un local de primera clase debe iluminar y ventilar al espacio urbano o a patios de primera clase, según las dimensiones indicadas por las normativas urbanísticas vigentes. El patio mínimo tendrá un lado mínimo de 3.00 m y una superficie mínima de 12.00 m2. Los patios no podrán cubrirse con elementos fijos ni claraboyas vidriadas ni corredizas. Solo se aceptan pérgolas de madera, metálicas o toldos.",
+        "referencia": "Art. 3.2.3.5"
+      },
+      {
+        "id": "q_30",
+        "corto": "Acceso a cochera en Ochava",
+        "pregunta": "¿Puedo poner el acceso a cochera por la ochava?",
+        "respuesta": "Una salida para vehículos no puede ubicarse en la línea municipal de esquina (ochava) y, cuando ésta exista, la salida estará alejada no menos de tres metros (3,00 m) del encuentro de las líneas municipales de las calles concurrentes.",
+        "referencia": "Art. 3.4.10.2"
+      }, 
+      {
+        "id": "q_31",
+        "corto": "Ventana sobre Medianero",
+        "pregunta": "¿Puedo construir una ventana sobre muro medianero?",
+        "respuesta": "No se permiten vistas a predios colindantes, ni entre unidades de uso independiente de un mismo predio, desde cualquier lugar situado a menor distancia que tres metros (3,00 m) del eje divisorio entre predios, o entre paramentos exteriores de locales correspondientes a unidades independientes. Si tiene un tapial de un metro con ochenta centímetros (1,80 m) como mínimo, es considerado interceptor de vista.",
+        "referencia": "Art. 3.7.1"
       }
     ]
   },
