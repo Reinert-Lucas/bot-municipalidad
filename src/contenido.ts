@@ -100,7 +100,7 @@ export const SECCIONES: Seccion[] = [
     "id": 3,
     "titulo": "Proyecto de las obras",
     "nombre": "Del Proyecto de las Obras",
-    "descripcion": "Cercos, desagües, salientes, alturas, accesos, columnas, patios, cocheras",
+    "descripcion": "Cercos, desagües, salientes, alturas, columnas",
     "preguntas": [
       {
         "id": "q_11",
