@@ -141,14 +141,14 @@ export const SECCIONES: Seccion[] = [
         "id": "q_29",
         "corto": "Accesos Vehiculares",
         "pregunta": "¿Existe una cantidad máxima de accesos vehiculares según el ancho del terreno?",
-        "respuesta": "Ver Imagen",
+        "respuesta": "Según el/los frentes que tiene el lote se tendrá las cantidades y dimensión de salidas para vehículos.",
         "referencia": "Art. 3.4.10.1"
       },
       {
         "id": "q_30",
         "corto": "Altura Minima de un Local",
         "pregunta": "¿Cuál es la altura mínima permitida de un local?",
-        "respuesta": "Ver Imagen",
+        "respuesta": "La altura mínima de cada local varía de acuerdo a su clase y uso. La altura libre y la distancia entre solados, mínimas, son las siguientes ☝️.",
         "referencia": "Art. 3.2.3.5"
       },
       {

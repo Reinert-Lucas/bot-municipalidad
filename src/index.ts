@@ -440,7 +440,7 @@ async function mostrarRespuesta(numero: string, qid: string): Promise<void> {
   const { seccion, pregunta: p } = item;
   const urlImagen = p.url ?? IMAGENES_RESPUESTA[qid];
   const respuesta = p.respuesta || (urlImagen ? "" : "La imagen de esta respuesta todavía no está configurada.\n\n");
-  const texto = `*${p.pregunta}*\n\n${respuesta}_Referencia: ${p.referencia}_\n\n${PREGUNTA_SEGUIR}`;
+  const texto = `*${p.pregunta}*\n\n${respuesta}\n_Referencia: ${p.referencia}_\n\n${PREGUNTA_SEGUIR}`;
   if (urlImagen) {
     await enviarImagenConBotones(numero, texto, urlImagen, botonesPost(seccion));
     return;
