@@ -154,11 +154,11 @@ function cargarContador(): ContadorMensual {
     }
   } catch {
     /* sin archivo previo o ilegible: se empieza de cero */
+    console.warn(
+      `No se encontró un contador mensual previo en ${RUTA_CONTADOR}: se empieza en 0. ` +
+        "Si esto ocurre después de cada deploy, el disco no es persistente y el tope mensual no es confiable.",
+    );
   }
-  console.warn(
-    `No se encontró un contador mensual previo en ${RUTA_CONTADOR}: se empieza en 0. ` +
-      "Si esto ocurre después de cada deploy, el disco no es persistente y el tope mensual no es confiable.",
-  );
   return { mes: mesActual(), cuenta: 0 };
 }
 
