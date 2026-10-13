@@ -264,8 +264,72 @@ export const SECCIONES: Seccion[] = [
     "id": 7,
     "titulo": "Integración patrimonial",
     "nombre": "Integración y Preservación Patrimonial",
-    "descripcion": "Próximamente",
-    "preguntas": []
+    "descripcion": "Inmuebles de interés patrimonial: protección, obras y sanciones",
+    "preguntas": [
+      {
+        "id": "q_33",
+        "corto": "Concepto y protección",
+        "pregunta": "¿Qué es un inmueble de interés patrimonial y cómo se determina su protección?",
+        "respuesta": "Es un inmueble con valores históricos, arquitectónicos, culturales o urbanos que justifican algún grado de protección, aunque no tenga una declaratoria específica. La protección alcanza a inmuebles públicos y privados incluidos en los registros, preinventarios y categorías de la normativa.\n\nEl grado se determina mediante una evaluación patrimonial que considera esos valores. El Código contempla las categorías de protección integral, estructural, ambiental o de conjunto, cautelar y cautela arqueológica, en grados de protección 0, 1, 2, 3 y 4.",
+        "referencia": "Arts. 7.1, 7.2.3, 7.5 y 7.6"
+      },
+      {
+        "id": "q_34",
+        "corto": "Antes de intervenir",
+        "pregunta": "¿Qué debo hacer antes de intervenir un inmueble patrimonial?",
+        "respuesta": "Toda intervención en inmuebles protegidos o de interés patrimonial debe ser evaluada y visada previamente por la Municipalidad mediante trámite de factibilidad urbanística: no se puede modificar un inmueble patrimonial sin autorización municipal. La obra solo puede iniciarse una vez aprobada, conforme a los criterios patrimoniales y los procedimientos vigentes.\n\n• Fachadas: depende del grado de protección; las modificaciones deben respetar los elementos significativos y los criterios de integración patrimonial, y requieren aprobación municipal.\n• Cambio de uso: puede admitirse según el grado de protección y la compatibilidad del nuevo uso con el inmueble, previa evaluación municipal.",
+        "referencia": "Arts. 7.1, 7.5, 7.6 y 7.7"
+      },
+      {
+        "id": "q_35",
+        "corto": "Grados 1 y 2",
+        "pregunta": "¿Qué permiten los grados de protección 1 y 2?",
+        "respuesta": "• Grado 1 (protección baja): permite intervenciones y sustituciones controladas, con integración armónica al entorno. Se admiten modificaciones, ampliaciones y reformas, sujetas a aprobación municipal.\n• Grado 2 (protección ambiental o de conjunto): busca conservar fachadas, elementos singulares y características del conjunto. Se admiten intervenciones controladas y ampliaciones que respeten la tipología, los elementos significativos y la integración con el entorno.\n\nUn volumen nuevo sobre un inmueble preinventariado depende del grado y de las condiciones de integración; para el grado 2, el Código fija criterios específicos de retiro del nuevo volumen respecto de la fachada.",
+        "referencia": "Arts. 7.6.b y 7.6.c"
+      },
+      {
+        "id": "q_36",
+        "corto": "Grados 3 y 4",
+        "pregunta": "¿Qué permiten los grados de protección 3 y 4?",
+        "respuesta": "• Grado 3: exige conservar los elementos tipológicos, compositivos y espaciales significativos (p. ej., fachada y primera línea de habitaciones), con intervenciones limitadas y controladas. Fachada: sin alterar los elementos significativos ni la composición original, con aprobación municipal. Se admiten demoliciones parciales o anexiones de volúmenes que no afecten la integridad tipológica y compositiva ni la singularidad del conjunto.\n• Grado 4: protección integral máxima para edificios de valor excepcional. No se permiten modificaciones del volumen, de la superficie construida ni de los entrepisos existentes, ni ocupar patios interiores con construcciones. Se admiten mantenimiento, conservación, consolidación, restauración y adecuaciones compatibles con sus valores; el uso puede cambiarse si es compatible con las características físicas del edificio y el carácter del área.",
+        "referencia": "Arts. 7.6.d y 7.6.e"
+      },
+      {
+        "id": "q_37",
+        "corto": "Demolición y linderas",
+        "pregunta": "¿Qué rige para demoliciones, ruinas y obras linderas a un inmueble patrimonial?",
+        "respuesta": "• Demolición: requiere evaluación y autorización municipal previa; su admisibilidad depende de la protección del inmueble y de la normativa aplicable. En demoliciones parciales se exige un protocolo específico con las operaciones y técnicas previstas, las partes a restituir, las planimetrías del edificio previo y el inventario de elementos y materiales a preservar.\n• Estado ruinoso: la Municipalidad evalúa si corresponde declararlo; no implica necesariamente que deba demolerse.\n• Obras linderas: en demoliciones o excavaciones se deben tomar precauciones adicionales para evitar daños estructurales o alteraciones morfológicas del inmueble protegido. Si hay daños por negligencia o vicios ocultos de la obra, además de las sanciones, los responsables deben restaurar el inmueble o las partes afectadas.",
+        "referencia": "Arts. 7.1, 7.6 a 7.8.2"
+      },
+      {
+        "id": "q_38",
+        "corto": "Instalaciones y acceso",
+        "pregunta": "¿Cómo se resuelven instalaciones, accesibilidad y línea de edificación en un edificio patrimonial?",
+        "respuesta": "• Instalaciones: deben proyectarse con el menor impacto posible sobre los materiales, la imagen, las fachadas y los espacios significativos del inmueble.\n• Accesibilidad: debe adecuarse a la normativa vigente, evitando alterar o destruir elementos significativos. Si la adaptación resulta inviable, el organismo competente evalúa alternativas justificadas.\n• Línea de edificación: en tramos patrimoniales coherentes debe preservarse la continuidad de la línea municipal de construcción existente, según las condiciones establecidas por el Código.",
+        "referencia": "Arts. 7.9.1, 7.9.2 y 7.9.3"
+      },
+      {
+        "id": "q_39",
+        "corto": "Marquesinas y carteles",
+        "pregunta": "¿Qué reglas hay para marquesinas, toldos y carteles en inmuebles patrimoniales?",
+        "respuesta": "• Marquesinas: no se permiten elementos corpóreos salientes, salvo marquesinas integradas a una rehabilitación completa de fachada aprobada por la Municipalidad.\n• Toldos: textiles, rebatibles, de un único color por obra y acordes con la fachada; sin publicidad, salvo la marca comercial del establecimiento.\n• Carteles salientes: uno por unidad funcional o parcela y por fachada; con frentes a distintas calles, uno en cada fachada, salvo en ochavas y zonas de seguridad de bocacalles.\n• Carteles frontales: en vanos o sectores sin elementos significativos que puedan distorsionarse, respetando las dimensiones y salientes del Código.\n• La Municipalidad puede exigir adecuar carteles y retirar toldos, marquesinas o cableados que no cumplan, con plazo de dos años desde la notificación fehaciente.",
+        "referencia": "Arts. 7.10.2.1 a 7.10.3.2 y 7.10.6"
+      },
+      {
+        "id": "q_40",
+        "corto": "Color y señalética",
+        "pregunta": "¿Puedo cambiar el color de la fachada o colocar señalética patrimonial?",
+        "respuesta": "• Color: la intervención debe tender a recuperar el color original. Se presenta una investigación técnico-histórica para evaluación y autorización municipal.\n• Señalética (carteles o placas patrimoniales): se admite en inmuebles con grado de protección 3 y 4, siempre que generen el menor impacto posible y cuenten con aprobación municipal.",
+        "referencia": "Arts. 7.10.4 y 7.10.5"
+      },
+      {
+        "id": "q_41",
+        "corto": "Sanciones y beneficios",
+        "pregunta": "¿Qué sanciones y qué beneficios hay para los inmuebles patrimoniales?",
+        "respuesta": "• Sanciones: intervenir sin permisos ni controles es una contravención grave. Si se elimina sin permiso un bien patrimonial declarado o preinventariado, se aplican sanciones vía Tribunal de Faltas.\n• Beneficios: según el proyecto y el grado de intervención admitido, pueden solicitarse compensaciones, como ampliación de altura, reducción del aporte al Fondo de Desarrollo Urbano o transferencia de beneficios de plusvalía. Requieren evaluación y acuerdo urbanístico: se presenta una propuesta a la Municipalidad, sujeta a la viabilidad del proyecto mediante trámite de factibilidad urbanística.",
+        "referencia": "Arts. 7.11.1, 7.11.2 y 7.12"
+      }
+    ]
   },
   {
     "id": 8,
