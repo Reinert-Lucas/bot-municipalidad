@@ -5,15 +5,22 @@
 import type { Seccion } from "./types.js";
 
 export const SALUDO =
-  "¡Hola!🙋‍♂️ Soy el asistente del Código de Edificación de la Municipalidad de Posadas.\n¿Qué sección querés consultar?\n\n_Las respuestas son síntesis de los artículos indicados y pueden contener errores; ante cualquier duda debe consultarse el texto completo y la normativa aplicable._\n\n*Nota:* Usa los botones de la parte inferior 👇";
+  `Hola🙋‍♂️ 
+  Soy el asistente del Código de Edificación de la Municipalidad de Posadas.
+  ¿Qué sección querés consultar?
+  
+  _Las respuestas son síntesis de los artículos indicados y pueden contener errores; ante cualquier duda debe consultarse el texto completo y la normativa aplicable._
+  
+  *Nota:* Usa los botones de la parte inferior 👇`;
 export const PREGUNTA_SECCIONES = "¿Qué sección querés consultar?🤔";
 export const PREGUNTA_SEGUIR = "¿Qué querés hacer ahora?🤔";
-export const DESPEDIDA = `¡Gracias por tu consulta! Si necesitás algo más, escribinos cuando quieras😁\n\n*Links que te pueden interesar:*
+export const DESPEDIDA = `¡Gracias por tu consulta!😁 Si necesitás algo más, escribinos cuando quieras.
+*Links que te pueden interesar:*
 ✅ Sistema GOP: https://posadas.gestiondeobrasprivadas.com.ar/
 ✅ Web de la Municipalidad: https://posadas.gov.ar/
-✅ Web de la Secretaría: https://posadas.gov.ar/planurbano/
-✅ Instagram de la Secretaría: https://instagram.com/planiestrategicayterritorial/
-✅ Facebook de la Secretaría: https://facebook.com/secretariadeplanificacionestrategicayterritorial/
+✅ Web de la Secretaría de Planificación: https://posadas.gov.ar/planurbano/
+✅ Instagram de la Secretaría de Planificación: https://instagram.com/planiestrategicayterritorial/
+✅ Facebook de la Secretaría de Planificación: https://facebook.com/secretariadeplanificacionestrategicayterritorial/
 ✅ Código de Edificación: https://drive.google.com/file/d/1eyLxb_MMhSKjQor9YqzGRm3XGLKgSDh_/view/`;
 export const SECCIONES: Seccion[] = [
   {
