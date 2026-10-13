@@ -8,23 +8,8 @@ export const SALUDO =
   "¡Hola! Soy el asistente del Código de Edificación de la Municipalidad de Posadas.\n¿Qué sección querés consultar?\n\n_Las respuestas son síntesis de los artículos indicados y pueden contener errores; ante cualquier duda debe consultarse el texto completo y la normativa aplicable._\n\n*Nota:* Usa los botones de la parte inferior 👇";
 export const PREGUNTA_SECCIONES = "¿Qué sección querés consultar?";
 export const PREGUNTA_SEGUIR = "¿Qué querés hacer ahora?";
-export const DESPEDIDA = "¡Gracias por tu consulta! Si necesitás algo más, escribinos cuando quieras.";
+export const DESPEDIDA = "¡Gracias por tu consulta! Si necesitás algo más, escribinos cuando quieras.\n\n*Links que te pueden interesar:*\n\nSistema GOP: https://posadas.gestiondeobrasprivadas.com.ar/\nWeb de la Municipalidad: https://posadas.gov.ar/\nInstagram de la Secretaría de Planificación: https://www.instagram.com/planiestrategicayterritorial/\nCodigo de Edificacion: https://drive.google.com/file/d/1eyLxb_MMhSKjQor9YqzGRm3XGLKgSDh_/view?usp=drive_link";
 export const SECCIONES: Seccion[] = [
-  {
-    "id": 1,
-    "titulo": "Generalidades",
-    "nombre": "Generalidades",
-    "descripcion": "Alcance del Código de Edificación",
-    "preguntas": [
-      {
-        "id": "q_1",
-        "corto": "Alcance del Código",
-        "pregunta": "¿Qué alcances tiene el Código de Edificación vigente?",
-        "respuesta": "Se aplica a propiedades públicas y privadas, y abarca el diseño, la construcción, reforma, ampliación, demolición y mantenimiento de edificios, estructuras e instalaciones mecánicas, eléctricas, electromecánicas, sanitarias, térmicas y de inflamables. Establece las especificaciones técnicas mínimas para garantizar la habitabilidad y la seguridad de las obras dentro del ejido de la ciudad.",
-        "referencia": "Art. 1.1.2"
-      }
-    ]
-  },
   {
     "id": 2,
     "titulo": "Administración",
