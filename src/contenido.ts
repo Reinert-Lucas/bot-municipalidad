@@ -8,7 +8,7 @@ export const SALUDO =
   "¡Hola! Soy el asistente del Código de Edificación de la Municipalidad de Posadas.\n¿Qué sección querés consultar?\n\n_Las respuestas son síntesis de los artículos indicados y pueden contener errores; ante cualquier duda debe consultarse el texto completo y la normativa aplicable._\n\n*Nota:* Usa los botones de la parte inferior 👇";
 export const PREGUNTA_SECCIONES = "¿Qué sección querés consultar?";
 export const PREGUNTA_SEGUIR = "¿Qué querés hacer ahora?";
-export const DESPEDIDA = "¡Gracias por tu consulta! Si necesitás algo más, escribinos cuando quieras.\n\n*Links que te pueden interesar:*\n✅Sistema GOP: https://posadas.gestiondeobrasprivadas.com.ar/\n✅Web de la Municipalidad: https://posadas.gov.ar/\n✅Instagram de la Secretaría de Planificación: https://www.instagram.com/planiestrategicayterritorial/\n✅Codigo de Edificacion: https://drive.google.com/file/d/1eyLxb_MMhSKjQor9YqzGRm3XGLKgSDh_/view?usp=drive_link";
+export const DESPEDIDA = "¡Gracias por tu consulta! Si necesitás algo más, escribinos cuando quieras.\n\n*Links que te pueden interesar:*\n✅ Sistema GOP: https://posadas.gestiondeobrasprivadas.com.ar/\n✅ Web de la Municipalidad: https://posadas.gov.ar/\n✅ Instagram de la Secretaría de Planificación: https://www.instagram.com/planiestrategicayterritorial/\n✅ Código de Edificación: https://drive.google.com/file/d/1eyLxb_MMhSKjQor9YqzGRm3XGLKgSDh_/view?usp=drive_link";
 export const SECCIONES: Seccion[] = [
   {
     "id": 2,
