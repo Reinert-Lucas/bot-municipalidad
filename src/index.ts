@@ -9,11 +9,19 @@ import type { MensajeEntrante, WebhookBody, Fila, Pregunta } from "./types.js";
 // Configuración
 const PORT = Number(process.env.PORT ?? 5000);
 const GRAPH_BASE = process.env.GRAPH_API_BASE ?? "https://graph.facebook.com/v25.0";
-const PERMITIR_SIN_FIRMA = process.env.ALLOW_UNSIGNED === "false"; // solo para desarrollo
+const PERMITIR_SIN_FIRMA = process.env.ALLOW_UNSIGNED === "true"; // solo para desarrollo
 const IMAGENES_RESPUESTA: Record<string, string | undefined> = {
   q_29: process.env.IMAGEN_Q29_URL,
   q_30: process.env.IMAGEN_Q30_URL,
 };
+
+const EQUIVALENCIAS: Record<string, string> = {
+  "5493751619821": "54375115619821",
+};
+
+function destinatario(numero: string): string {
+  return EQUIVALENCIAS[numero] ?? numero;
+}
 
 function requerida(nombre: string): string {
   const valor = process.env[nombre];
@@ -293,7 +301,7 @@ async function post(payload: object, esAviso = false): Promise<boolean> {
 function interactivo(numero: string, interactive: object): object {
   return {
     messaging_product: "whatsapp",
-    to: numero,
+    to: destinatario(numero),
     type: "interactive",
     interactive,
   };
@@ -303,7 +311,7 @@ function enviarTexto(numero: string, texto: string, esAviso = false): Promise<bo
   return post(
     {
       messaging_product: "whatsapp",
-      to: numero,
+      to: destinatario(numero),
       type: "text",
       text: { body: texto },
     },
