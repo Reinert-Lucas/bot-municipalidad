@@ -6,12 +6,12 @@ import type { Seccion } from "./types.js";
 
 export const SALUDO =
   `Hola🙋‍♂️ 
-  Soy el asistente del Código de Edificación de la Municipalidad de Posadas.
-  ¿Qué sección querés consultar?
+Soy el asistente del Código de Edificación de la Municipalidad de Posadas.
+¿Qué sección querés consultar?
   
-  _Las respuestas son síntesis de los artículos indicados y pueden contener errores; ante cualquier duda debe consultarse el texto completo y la normativa aplicable._
+_Las respuestas son síntesis de los artículos indicados y pueden contener errores; ante cualquier duda debe consultarse el texto completo y la normativa aplicable._
   
-  *Nota:* Usa los botones de la parte inferior 👇`;
+*Nota:* Usa los botones de la parte inferior 👇`;
 export const PREGUNTA_SECCIONES = "¿Qué sección querés consultar?🤔";
 export const PREGUNTA_SEGUIR = "¿Qué querés hacer ahora?🤔";
 export const DESPEDIDA = `¡Gracias por tu consulta!😁 Si necesitás algo más, escribinos cuando quieras.
