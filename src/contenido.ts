@@ -5,26 +5,24 @@
 import type { Seccion } from "./types.js";
 
 export const SALUDO =
-  "¡Hola! Soy el asistente del Código de Edificación de la Municipalidad de Posadas.\n¿Qué sección querés consultar?\n\n_Las respuestas son síntesis de los artículos indicados y pueden contener errores; ante cualquier duda debe consultarse el texto completo y la normativa aplicable._\n\n*Nota:* Usa los botones de la parte inferior 👇";
-export const PREGUNTA_SECCIONES = "¿Qué sección querés consultar?";
-export const PREGUNTA_SEGUIR = "¿Qué querés hacer ahora?";
-export const DESPEDIDA = "¡Gracias por tu consulta! Si necesitás algo más, escribinos cuando quieras.";
+  `Hola🙋‍♂️ 
+Soy el asistente del Código de Edificación de la Municipalidad de Posadas.
+¿Qué sección querés consultar?
+  
+_Las respuestas son síntesis de los artículos indicados y pueden contener errores; ante cualquier duda debe consultarse el texto completo y la normativa aplicable._
+  
+*Nota:* Usa los botones de la parte inferior 👇`;
+export const PREGUNTA_SECCIONES = "¿Qué sección querés consultar?🤔";
+export const PREGUNTA_SEGUIR = "¿Qué querés hacer ahora?🤔";
+export const DESPEDIDA = `¡Gracias por tu consulta!😁 Si necesitás algo más, escribinos cuando quieras.
+*Links que te pueden interesar:*
+✅ Sistema GOP: https://posadas.gestiondeobrasprivadas.com.ar/
+✅ Web de la Municipalidad: https://posadas.gov.ar/
+✅ Web de la Secretaría de Planificación: https://posadas.gov.ar/planurbano/
+✅ Instagram de la Secretaría de Planificación: https://instagram.com/planiestrategicayterritorial/
+✅ Facebook de la Secretaría de Planificación: https://facebook.com/secretariadeplanificacionestrategicayterritorial/
+✅ Código de Edificación: https://drive.google.com/file/d/1eyLxb_MMhSKjQor9YqzGRm3XGLKgSDh_/view/`;
 export const SECCIONES: Seccion[] = [
-  {
-    "id": 1,
-    "titulo": "Generalidades",
-    "nombre": "Generalidades",
-    "descripcion": "Alcance del Código de Edificación",
-    "preguntas": [
-      {
-        "id": "q_1",
-        "corto": "Alcance del Código",
-        "pregunta": "¿Qué alcances tiene el Código de Edificación vigente?",
-        "respuesta": "Se aplica a propiedades públicas y privadas, y abarca el diseño, la construcción, reforma, ampliación, demolición y mantenimiento de edificios, estructuras e instalaciones mecánicas, eléctricas, electromecánicas, sanitarias, térmicas y de inflamables. Establece las especificaciones técnicas mínimas para garantizar la habitabilidad y la seguridad de las obras dentro del ejido de la ciudad.",
-        "referencia": "Art. 1.1.2"
-      }
-    ]
-  },
   {
     "id": 2,
     "titulo": "Administración",
