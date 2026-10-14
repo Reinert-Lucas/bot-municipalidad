@@ -124,14 +124,14 @@ export const SECCIONES: Seccion[] = [
       {
         "id": "q_13",
         "corto": "Salientes de la L.M.",
-        "pregunta": "¿Qué puedo construir por fuera de la Línea Municipal?",
+        "pregunta": "¿Qué puedo construir por fuera de la LM?",
         "respuesta": "En la fachada principal solo se permite sobresalir:\n• Hasta 3,00 m de altura: umbrales y antepechos hasta 0,02 m; ménsulas de balcones o voladizos, listeles, guardapolvos y otros motivos de ornato a más de 2,30 m de altura. No pueden sobresalir hojas de puertas o ventanas, cortinas, celosías, barandas, rejas ni otro elemento fijo o móvil.\n• Sobre 3,00 m: en calles y avenidas de 10 a 20 m de ancho, cuerpos cerrados y balcones hasta 1/12 del ancho de la calle; en avenidas de 23 m o más, desde 1/12 del ancho hasta 2,00 m.\n\nNo rige en sectores con regulaciones específicas del Código de Planeamiento Urbano. En esquina, las salientes de los niveles superiores mantienen la medida permitida de la calle más angosta.",
         "referencia": "Art. 3.2.3.1"
       },
       {
         "id": "q_14",
         "corto": "Hojas de ventanas y puertas sobre LM",
-        "pregunta": "¿Se pueden batir hojas de ventanas o puertas sobre la línea municipal?",
+        "pregunta": "¿Se pueden batir hojas de ventanas o puertas sobre la LM?",
         "respuesta": "Queda prohibido batir las hojas de puertas y portones o ventanas hacia la vereda cuando sobrepasen la línea municipal, como así también la colocación de carpintería con salientes que sobrepasan la línea municipal.",
         "referencia": "Art. 3.2.3.4"
       },
@@ -145,21 +145,21 @@ export const SECCIONES: Seccion[] = [
       {
         "id": "q_16",
         "corto": "Accesos Vehiculares",
-        "pregunta": "¿Existe una cantidad máxima de accesos vehiculares según el ancho del terreno?",
+        "pregunta": "¿Existe un máximo de accesos vehiculares según el ancho del terreno?",
         "respuesta": "Según el/los frentes que tiene el lote se tendrá las cantidades y dimensión de salidas para vehículos [Ver Tabla ☝️].",
         "referencia": "Art. 3.4.10.1"
       },
       {
         "id": "q_17",
         "corto": "Altura Minima de un Local",
-        "pregunta": "¿Cuál es la altura mínima permitida de un local?",
+        "pregunta": "¿Cuál es la altura mínima de un local?",
         "respuesta": "La altura mínima de cada local varía de acuerdo a su clase y uso. La altura libre y la distancia entre solados, mínimas, son las siguientes [Ver Tabla ☝️].",
         "referencia": "Art. 3.2.3.5"
       },
       {
         "id": "q_18",
         "corto": "Accesos y Columnas en Ochava",
-        "pregunta": "¿Puedo poner un acceso a cochera y/o columnas en la ochava?",
+        "pregunta": "¿Puedo poner un acceso a cochera o columnas en la ochava?",
         "respuesta": "Una salida para vehículos no puede ubicarse en la línea municipal de esquina (ochava) y, cuando ésta exista, la salida estará alejada no menos de tres metros (3,00 m) del encuentro de las líneas municipales de las calles concurrentes. Tampoco se admite la ejecución de columnas en ochavas, está prohibido.",
         "referencia": "Art. 3.4.10.2 y 3.2.3.5"
       }, 
