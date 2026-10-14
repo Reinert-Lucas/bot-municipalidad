@@ -80,16 +80,9 @@ export const SECCIONES: Seccion[] = [
       },
       {
         "id": "q_8",
-        "corto": "Permiso preliminares",
-        "pregunta": "¿Puedo pedir un permiso de trabajos preliminares?",
-        "respuesta": "Se puede solicitar cuando ya se inició el trámite de aprobación de planos y siempre que no se trate de edificaciones que pudieran tener interés patrimonial.",
-        "referencia": "Art. 2.1.8.7"
-      },
-      {
-        "id": "q_9",
-        "corto": "Trabajos menores",
-        "pregunta": "¿Cómo se tramita un permiso para trabajos menores?",
-        "respuesta": "Para pequeñas reformas, trabajos en fachadas, etc., el profesional debe comunicarlo por nota. Se puede solicitar en GOP mediante el trámite de trabajos preliminares, con una memoria descriptiva de las tareas a ejecutar y, si es necesario, planos y otra documentación técnica.",
+        "corto": "Permiso preliminares y menores",
+        "pregunta": "¿Cómo se tramita un permiso de trabajos preliminares o menores?",
+        "respuesta": "• Trabajos Preliminares: Se puede solicitar cuando ya se inició el trámite de aprobación de planos y siempre que no se trate de edificaciones que pudieran tener interés patrimonial.\n• Trabajos Menores: Para pequeñas reformas, trabajos en fachadas, etc. El profesional debe comunicarlo por nota. Se puede solicitar en GOP mediante el trámite de trabajos preliminares, con una memoria descriptiva de las tareas a ejecutar y, si es necesario, planos y otra documentación técnica.",
         "referencia": "Art. 2.1.8.7"
       },
       {
