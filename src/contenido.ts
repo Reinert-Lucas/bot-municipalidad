@@ -250,13 +250,6 @@ export const SECCIONES: Seccion[] = [
     "descripcion": "Instalaciones complementarias: cloacas y pozo absorbente",
     "preguntas": [
       {
-        "id": "q_30",
-        "corto": "Sin red cloacal",
-        "pregunta": "¿Cómo procedo si no hay red cloacal cercana al terreno donde voy a construir?",
-        "respuesta": "Las zonas sin red cloacal deben instalar un sistema cloacal estático/cerrado, compuesto al final por cámara de inspección, cámara séptica y pozo absorbente, o los sistemas equivalentes del Código.\n\nEl pozo absorbente debe tener como mínimo 1,00 m de diámetro y 3,00 m de profundidad, y estar a 15 m del pozo de agua, a 1,50 m del eje medianero y a 1,00 m de la Línea Municipal.",
-        "referencia": "Art. 5.6.5"
-      },
-      {
         "id": "q_43",
         "corto": "Entrada y Salida de Ascensor",
         "pregunta": "¿Existe un ancho mínimo para la entrada y salida del ascensor?",
