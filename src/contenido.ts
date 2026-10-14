@@ -255,6 +255,71 @@ export const SECCIONES: Seccion[] = [
         "pregunta": "¿Cómo procedo si no hay red cloacal cercana al terreno donde voy a construir?",
         "respuesta": "Las zonas sin red cloacal deben instalar un sistema cloacal estático/cerrado, compuesto al final por cámara de inspección, cámara séptica y pozo absorbente, o los sistemas equivalentes del Código.\n\nEl pozo absorbente debe tener como mínimo 1,00 m de diámetro y 3,00 m de profundidad, y estar a 15 m del pozo de agua, a 1,50 m del eje medianero y a 1,00 m de la Línea Municipal.",
         "referencia": "Art. 5.6.5"
+      },
+      {
+        "id": "q_43",
+        "corto": "Entrada y Salida de Ascensor",
+        "pregunta": "¿Existe un ancho mínimo para la entrada y salida del ascensor?",
+        "respuesta": "El rellano o descanso, es el lugar fijo de la estructura o del edificio desde cuyo nivel se puede entrar o salir del coche. El rellano frente a un ascensor o grupo de ascensores se deberá dimensionar de acuerdo a la capacidad de las cabinas. El lado mínimo del rellano deberá tener 1,50m, calculado éste para servir hasta diez (10) personas.",
+        "referencia": "Art. 5.3.3.k"
+      },
+      {
+        "id": "q_44",
+        "corto": "Lote sin red de Agua o Cloaca",
+        "pregunta": "¿Qué pasa si el lote no posee red de agua potable o red cloacal?",
+        "respuesta": "Un predio donde se habita o trabaja ubicado en los radios de la ciudad no servidos por las redes de agua corriente deberá tener verificación de la calidad de agua obtenida del laboratorio municipal u otro que sea admisible por la Municipalidad. Si hay una perforación a cargo de una cooperativa, se debe adjuntar certificación de conexión a dicha red otorgada por la cooperativa correspondiente.\nLas zonas sin red cloacal deben instalar un sistema cloacal estático/cerrado, compuesto al final por cámara de inspección, cámara séptica y pozo absorbente, o los sistemas equivalentes del Código.\n\nEl pozo absorbente debe tener como mínimo 1,00 m de diámetro y 3,00 m de profundidad, y estar a 15 m del pozo de agua, a 1,50 m del eje medianero y a 1,00 m de la Línea Municipal.",
+        "referencia": "Art. 5.6.2 y 5.6.5"
+      },
+      {
+        "id": "q_45",
+        "corto": "Pozo Negro y Aljibe",
+        "pregunta": "¿A qué distancia debe estar un pozo de agua o aljibe de un pozo negro?",
+        "respuesta": "El aljibe debe estar alejado del pozo absorbente a una distancia de quince metros (15 m), y ubicado aguas arriba del mismo. Se deben realizar paramentos cuyo interior debe ser revocado con cemento alisado a efectos de tener superficies lisas; las esquinas deben ser redondeadas para evitar la acumulación de partículas y suciedad. El aljibe debe cerrarse con losa de hormigón armado con una tapa de acceso para una persona, para que pueda efectuar la limpieza, de sesenta centímetros por sesenta centímetros (0,60 m x 0,60 m). Este cierre debe ser hermético.",
+        "referencia": "Art. 5.6.5"
+      },
+      {
+        "id": "q_46",
+        "corto": "Biodigestores",
+        "pregunta": "¿Está permitido el uso de Biodigestores?",
+        "respuesta": "Los biodigestores deberán ser de marcas homologadas y su capacidad será calculada según los datos definidos en las fichas técnicas correspondientes, las cuales deberán ser adjuntadas al expediente, lo mismo que el cálculo. Se deberán montar en zona alta, en la que no se formen charcos o se inunde cuando llueva, de no tener este espacio disponible se deberá rellenar luego de realizada la instalación. Se deberá mantener la mayor distancia posible desde el sistema de tratamiento de efluentes cloacales generados a cuerpos de agua superficiales (lagunas o arroyos), a perforaciones de extracción de agua, a los límites del terreno y edificaciones.",
+        "referencia": "Art. 5.6.12"
+      },
+      {
+        "id": "q_47",
+        "corto": "Garrafas",
+        "pregunta": "¿Puedo usar Garrafas?",
+        "respuesta": "Las garrafas deberán instalarse en una casilla ubicada en patio abierto, tanto para viviendas unifamiliares como para multifamiliares, edificios públicos, comerciales y de cualquier otra nomenclatura. Se deberá colocar una llave de paso previo al artefacto a surtir. La casilla podrá ubicarse bajo escalera, siempre y cuando ventile a patio abierto y descubierto. Deberá ser de material incombustible. La instalación de la cañería debe cumplir con la NAG 200; el flexible deberá ser de material aprobado por normas IRAM; si es de plástico debe cambiarse cada 5 años. Debe estar alejado el regulador como mínimo un metro (1 m) de aberturas y un metro con cincuenta centímetros (1,50 m) de puntos de ignición, tableros eléctricos, bocas de electricidad y acometidas. En edificios se podrán colocar al borde del balcón siempre que se cumplan los demás requisitos. Si no hay otra alternativa podrá instalarse en balcones sobre veredas. Estos balcones no podrán ser cerrados.",
+        "referencia": "Art. 5.6.12"
+      },
+      {
+        "id": "q_48",
+        "corto": "Garrafones de 0.50m3",
+        "pregunta": "¿Cuáles son los requisitos para colocar GARRAFONES de 0.50m3?",
+        "respuesta": "Deberán presentar factibilidad otorgada por la Secretaría de Energía de la Nación o empresa auditora registrada y autorizada. La cañería domiciliaria debe cumplir con lo que establece la NAG 200. La instalación y ubicación de los recipientes deberán cumplir las normas técnicas de seguridad indicadas en la resolución 1097/15 de la Secretaría de Energía de la Nación, o la que esté en vigencia al momento de la aprobación. Las empresas que distribuyen gas licuado de petróleo a granel y las auditoras deben inscribirse en el padrón de comercio municipal , acreditar y contar con un representante técnico autorizado, y uno legal de forma permanente en la ciudad. Ambos representantes deben estar matriculados y habilitados por el Colegio y/o Consejo profesional provincial correspondiente.",
+        "referencia": "Art. 5.7.3"
+      },
+      {
+        "id": "q_49",
+        "corto": "Pararrayos",
+        "pregunta": "¿Cuándo es obligatorio colocar Pararrayos?",
+        "respuesta": "En los siguientes edificios, se deberá instalar pararrayos de manera obligatoria: hospitales, centros de salud con artefactos de supervivencia, escuelas, estaciones de expendio de combustible públicas o privadas, edificios con más de cuatro (4) plantas (salvo caso de que exista otro más alto en la zona de influencia que ya posea pararrayos y que los cálculos indiquen que no sea necesario) y plantas de gas. La Municipalidad podrá indicar en otros casos la necesidad de instalar pararrayos en obras que, por su altura o por sus especiales características, sean susceptibles de ser dañadas por descargas eléctricas atmosféricas.",
+        "referencia": "Art. 5.12.1"
+      },
+      {
+        "id": "q_50",
+        "corto": "SET",
+        "pregunta": "¿Dónde debe estar ubicada la SET, si EMSA me la exige en la factibilidad?",
+        "respuesta": "La ubicación del recinto a ser utilizado para la S.E.T debe estar preferentemente próxima a la línea de edificación municipal de manera de independizar del movimiento normal de los habitantes del edificio y facilitar el acceso al personal técnico de EMSA, para operación y mantenimiento de los mismos. Deberá pertenecer a una zona resistente de la construcción capaz de soportar el peso y el tiro de los conductores. Para la elección del lugar deberá tenerse en cuenta que los conductores en su trayecto no pasen por zonas que puedan ofrecer peligro de contacto de personas, carteles, etcétera.",
+        "referencia": "Art. 5.15"
+      },
+      {
+        "id": "q_51",
+        "corto": "Conservacion de Ascensores, Montacargas, etc",
+        "pregunta": "¿Cuáles son las responsabilidades para la conservacion de ascensores, montacargas, etc.?",
+        "respuesta": `Propietarios: Contratar libremente un servicio de mantenimiento con empresa conservadora habilitada por la Municipalidad de Posadas. Comunicar a la Municipalidad dentro de los treinta (30) días hábiles dicha contratación, indicando empresa, tipo de atención, y vigencia del contrato. En caso de rescisión de contrato o no renovación de los mismos servicios, deberá comunicar dentro de los quince (15) días hábiles los datos de la nueva empresa contratada.
+        Empresa Conservadora: Comunicar a la Municipalidad de Posadas, todo contrato de mantenimiento celebrado, dentro de los quince (15) días hábiles, indicando ubicación de la finca, cantidad de máquinas y características de uso, nombre, apellido y domicilio del suscriptor del contrato, y del carácter de la representación invocada. El caso de rescisión o no renovación del contrato debe comunicarlo por lo menos con quince (15) días hábiles de anticipación al propietario y a la Municipalidad. Clausurar equipos o parte de ellos hasta que se resuelva la deficiencia. Comunicar a la Municipalidad anormalidades que signifiquen riesgo para personas o cosas y no quieran, o puedan, ser corregidos por el propietario.
+        `,
+        "referencia": "Art. 5.17.6.1"
       }
     ]
   },
