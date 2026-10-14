@@ -11,8 +11,7 @@ const PORT = Number(process.env.PORT ?? 5000);
 const GRAPH_BASE = process.env.GRAPH_API_BASE ?? "https://graph.facebook.com/v25.0";
 const PERMITIR_SIN_FIRMA = process.env.ALLOW_UNSIGNED === "true"; // solo para desarrollo
 const IMAGENES_RESPUESTA: Record<string, string | undefined> = {
-  q_29: process.env.IMAGEN_Q29_URL,
-  q_30: process.env.IMAGEN_Q30_URL,
+  q_16: process.env.IMAGEN_Q16_URL,
 };
 
 const EQUIVALENCIAS: Record<string, string> = {

@@ -110,14 +110,14 @@ export const SECCIONES: Seccion[] = [
       {
         "id": "q_11",
         "corto": "Cerco en baldíos",
-        "pregunta": "¿Estoy obligado a construir un cerco en el frente de un terreno baldío?",
+        "pregunta": "¿Estoy obligado a construir un cerco frente a un baldío?",
         "respuesta": "Sí. Todo propietario de un predio baldío o edificado con frente a la vía pública debe construir y conservar la cerca en su frente si no hay fachada sobre la Línea Municipal. La cerca separa la propiedad privada del espacio público.\n\nEl dueño de un predio edificado queda eximido si mantiene frente a su predio un jardín o solado en buen estado y genera límites materiales que indiquen la división.",
         "referencia": "Art. 3.1.1.1"
       },
       {
         "id": "q_12",
         "corto": "Desagües a la vereda",
-        "pregunta": "¿Puedo desagotar aires acondicionados y desagües pluviales a la vereda?",
+        "pregunta": "¿Puedo desagotar aires acondicionados y desagües a la vereda?",
         "respuesta": "Los conductos de lluvia, desagües pluviales y de aires acondicionados pueden ser visibles en la fachada principal si respetan su estilo, pero deben conectarse bajo la vereda a la red pluvial.\n\nLos caños de ventilación de cloacas domiciliarias u otros conductos no pueden ejecutarse sobre la vía pública, salvo que se traten arquitectónicamente junto con la fachada. La tubería vertical se adosa al muro divisorio, salvo prohibición en las normas de instalaciones para usos especiales.",
         "referencia": "Art. 3.2.2.4"
       },
@@ -144,18 +144,18 @@ export const SECCIONES: Seccion[] = [
       },
       {
         "id": "q_16",
-        "corto": "Accesos Vehiculares",
-        "pregunta": "¿Existe un máximo de accesos vehiculares según el ancho del terreno?",
-        "respuesta": "Según el/los frentes que tiene el lote se tendrá las cantidades y dimensión de salidas para vehículos [Ver Tabla ☝️].",
-        "referencia": "Art. 3.4.10.1"
+        "corto": "Altura Minima y Accesos Vehiculares",
+        "pregunta": "¿Cuál es la altura mínima de un local? ¿Existe un máximo de accesos vehiculares según el ancho del terreno?",
+        "respuesta": "La altura mínima de cada local varía de acuerdo a su clase y uso. La altura libre y la distancia entre solados. Por otro lado según el/los frentes que tiene el lote se tendrá las cantidades y dimensión de salidas para vehículos [Ver Tablas ☝️].",
+        "referencia": "Art. 3.4.10.1 y 3.2.3.5"
       },
-      {
+      /* {
         "id": "q_17",
         "corto": "Altura Minima de un Local",
         "pregunta": "¿Cuál es la altura mínima de un local?",
         "respuesta": "La altura mínima de cada local varía de acuerdo a su clase y uso. La altura libre y la distancia entre solados, mínimas, son las siguientes [Ver Tabla ☝️].",
         "referencia": "Art. 3.2.3.5"
-      },
+      }, */
       {
         "id": "q_18",
         "corto": "Accesos y Columnas en Ochava",
