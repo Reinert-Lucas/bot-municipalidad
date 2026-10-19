@@ -3,7 +3,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import { mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { dirname } from "node:path";
-import { DESPEDIDA, PREGUNTA_SECCIONES, PREGUNTA_SEGUIR, SALUDO, SECCIONES } from "./contenido.js";
+import { DESPEDIDA, POLITICA_HTML, PREGUNTA_SECCIONES, PREGUNTA_SEGUIR, SALUDO, SECCIONES } from "./contenido.js";
 import type { MensajeEntrante, WebhookBody, Fila, Pregunta } from "./types.js";
 
 // Configuración
@@ -631,7 +631,10 @@ const server = createServer({ connectionsCheckingInterval: 2_000 }, async (req, 
       void tarea.finally(() => pendientes.delete(tarea));
       return;
     }
-
+    if (req.method === "GET" && url.pathname === "/privacidad") {
+      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "X-Content-Type-Options": "nosniff" });
+      return void res.end(POLITICA_HTML);
+    }
     responder(res, 404, "No encontrado");
   } catch (e) {
     console.error("Error en el servidor:", e);

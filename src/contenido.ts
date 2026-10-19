@@ -437,3 +437,22 @@ export const SECCIONES: Seccion[] = [
     "preguntas": []
   }
 ];
+
+export const POLITICA_HTML = `
+  <h2 style="text-align: center;">Política de Privacidad</h2>
+  <p style="text-align: justify; font-size: 0.9rem; line-height: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem; padding: 0.5rem; background-color: #f9f9f9; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #e0e0e0;">
+  <strong>Política de Privacidad – Asistente del Código de Edificación (Municipalidad de Posadas)</strong> <br>
+
+  <strong>Responsable:</strong> Municipalidad de Posadas, San Martín 1579, N3300 Posadas. Contacto: [email]. <br>
+
+  <strong>Qué datos tratamos:</strong> al escribir al asistente por WhatsApp recibimos tu número de teléfono y las opciones que elegís en el menú (o el texto que envíes). No te pedimos nombre, documento ni otros datos personales.<br>
+
+  <strong>Para qué los usamos:</strong> únicamente para responder tu consulta sobre el Código de Edificación y para prevenir abusos del servicio (límites de mensajes por número).<br>
+
+  <strong>Conservación:</strong> no guardamos el historial de tus conversaciones. Tu número se conserva solo de forma temporal en memoria para el control de límites y no se registra completo en nuestros registros técnicos.<br>
+
+  <strong>Terceros:</strong> el servicio funciona sobre WhatsApp Business Platform (Meta Platforms), que procesa los mensajes según sus propias políticas. Alojamos el servicio en https://render.com/. No vendemos ni cedemos tus datos.<br>
+
+  <strong>Información orientativa:</strong> las respuestas son síntesis del Código y no reemplazan el texto normativo.<br>
+
+  <strong>Cambios:</strong> publicaremos cualquier modificación en esta página. Última actualización: 19/10/2026.</p>`
