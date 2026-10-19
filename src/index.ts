@@ -534,6 +534,7 @@ async function procesarWebhook(body: WebhookBody): Promise<void> {
 // Servidor HTTP
 function leerBody(req: IncomingMessage): Promise<Buffer> {
   return new Promise((resolve, reject) => {
+    console.log("Solicitud HTTP recibida:", req.method, req.url);
     const partes: Buffer[] = [];
     let total = 0;
     req.on("data", (chunk: Buffer) => {
