@@ -14,7 +14,7 @@ const IMAGENES_RESPUESTA: Record<string, string | undefined> = {
   q_16: process.env.IMAGEN_Q16_URL,
 };
 
-const EQUIVALENCIAS: Record<string, string> = {
+ const EQUIVALENCIAS: Record<string, string> = {
   "5493751619821": "54375115619821",
 };
 
@@ -72,8 +72,10 @@ const DIA = 24 * HORA;
 const MAX_CLAVES = 50_000; // tope de entradas en cada tabla en memoria
 const MAX_BODY = 262_144; // 256 KB; los webhooks de WhatsApp pesan unos pocos KB
 const DURACIONES_BLOQUEO = [10 * MINUTO, HORA, DIA]; // escalan con cada reincidencia
-const AVISO_LIMITE = "Detectamos demasiados mensajes en poco tiempo. Por favor, esperá unos minutos antes de volver a escribir.";
-const AVISO_MES_AGOTADO = "Por el momento el asistente alcanzó su límite de consultas de este mes. Volverá a estar disponible a partir del 1.º del mes próximo.";
+const AVISO_LIMITE =
+  "Detectamos demasiados mensajes en poco tiempo. Por favor, esperá unos minutos antes de volver a escribir.";
+const AVISO_MES_AGOTADO =
+  "Por el momento el asistente alcanzó su límite de consultas de este mes. Volverá a estar disponible a partir del 1.º del mes próximo.";
 
 // Índices del contenido
 const PREGUNTAS = new Map<string, { seccion: number; pregunta: Pregunta }>();
@@ -534,7 +536,6 @@ async function procesarWebhook(body: WebhookBody): Promise<void> {
 // Servidor HTTP
 function leerBody(req: IncomingMessage): Promise<Buffer> {
   return new Promise((resolve, reject) => {
-    console.log("Solicitud HTTP recibida:", req.method, req.url);
     const partes: Buffer[] = [];
     let total = 0;
     req.on("data", (chunk: Buffer) => {
