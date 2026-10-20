@@ -443,7 +443,7 @@ export const POLITICA_HTML = `
   <p style="text-align: justify; font-size: 0.9rem; line-height: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem; padding: 0.5rem; background-color: #f9f9f9; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #e0e0e0;">
   <strong>Política de Privacidad – Asistente del Código de Edificación (Municipalidad de Posadas)</strong> <br>
 
-  <strong>Responsable:</strong> Municipalidad de Posadas, San Martín 1579, N3300 Posadas. Contacto: [email]. <br>
+  <strong>Responsable:</strong> Municipalidad de Posadas, San Martín 1579, N3300 Posadas. <br>
 
   <strong>Qué datos tratamos:</strong> al escribir al asistente por WhatsApp recibimos tu número de teléfono y las opciones que elegís en el menú (o el texto que envíes). No te pedimos nombre, documento ni otros datos personales.<br>
 
